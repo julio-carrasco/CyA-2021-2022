@@ -1,0 +1,5 @@
+aeiou != ba
+12345 != ba
+aabbccddee != ba
+& != ba
+Cadena no valida
