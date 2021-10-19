@@ -5,9 +5,9 @@
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
 
-// Constructor de la clase Cadena, crea 2 elementos, cadena_ y order
+// Constructor de la clase Cadena, crea 2 elementos, cadena_ y order_
 // cadena_ almacena la cadena introducida
-// order es un vector de pares que almacena el simbolo y su posicion en la
+// order_ es un vector de pares que almacena el simbolo y su posicion en la
 // cadena
 
 Cadena::Cadena(std::string chain, Alfabeto const &sigma) {
@@ -21,12 +21,12 @@ Cadena::Cadena(std::string chain, Alfabeto const &sigma) {
   }
   cadena_ = chain.substr(position);
 
-  // Se construye el vector de pares order a partir del alfabeto
+  // Se construye el vector de pares order_ a partir del alfabeto
   const int length = sigma.get_size();
   for (int i = 0; i < length; i++) {
     size_t pos = get_chain().find(sigma.get_a(i), 0);
     while (pos != std::string::npos) {
-      order.push_back(std::make_pair(sigma.get_a(i), pos));
+      order_.push_back(std::make_pair(sigma.get_a(i), pos));
       pos = get_chain().find(sigma.get_a(i), pos + 1);
     }
   }
@@ -34,7 +34,7 @@ Cadena::Cadena(std::string chain, Alfabeto const &sigma) {
   // Caso de cadena vacia
   if (size == 0) {
     cadena_ = "&";
-    order.push_back(std::make_pair("&", 0));
+    order_.push_back(std::make_pair("&", 0));
   }
 }
 
@@ -55,11 +55,11 @@ std::string Cadena::Inversa() {
     return "Cadena no valida";
   }
   std::string out;
-  int size = order.size();
-  std::sort(order.begin(), order.end(),
+  int size = order_.size();
+  std::sort(order_.begin(), order_.end(),
             [](auto &left, auto &right) { return left.second > right.second; });
   for (int i = 0; i < size; i++) {
-    out = out + order[i].first;
+    out = out + order_[i].first;
   }
   return out;
 }
@@ -129,10 +129,10 @@ std::string Cadena::get_chain() { return cadena_; }
 
 // Imprime en pantalla el vector de pares
 void Cadena::print_o() {
-  int size = order.size();
+  int size = order_.size();
   std::cout << "size: " << size << std::endl;
   for (int i = 0; i < size; i++) {
-    std::cout << order[i].first << " " << order[i].second << std::endl;
+    std::cout << order_[i].first << " " << order_[i].second << std::endl;
   }
 }
 
@@ -141,16 +141,16 @@ void Cadena::print_o() {
 bool Cadena::Is_Correct() {
   bool condition = false;
   int contador = 0;
-  int size = order.size();
+  int size = order_.size();
   int chain = cadena_.size();
   for (int i = 0; i < size; i++) {
-    contador = contador + order[i].first.size();
+    contador = contador + order_[i].first.size();
   }
   if (contador == chain) {
     condition = true;
   }
   for(int j = 0; j < size; j++) {
-    if("&" == order[j].first) {
+    if("&" == order_[j].first) {
       condition = false;
     }
   }

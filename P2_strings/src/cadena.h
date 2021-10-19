@@ -11,7 +11,7 @@
 class Cadena {
  private:
   std::string cadena_;
-  std::vector<std::pair<std::string, int>> order;
+  std::vector<std::pair<std::string, int>> order_;
   std::string get_chain();
   bool Is_Correct();
   bool Check(const std::string &, const int &);
