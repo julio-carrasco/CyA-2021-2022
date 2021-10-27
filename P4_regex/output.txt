@@ -22,7 +22,7 @@ DESCRIPTION:
 VARIABLES: 
 [Line 29] INT: potato
 [Line 34] INT: factorial = 1
-[Line 37] DOUBLE: xpotato
+[Line 37] DOUBLE: xpotato = 2
 [Line 38] DOUBLE: korone = 0.5
 [Line 49] INT: limit
 [Line 50] INT: okawaiikoto = 3629

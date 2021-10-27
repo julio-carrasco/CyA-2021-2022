@@ -6,6 +6,7 @@
 
 #include "info.h"
 
+// Constructor de clase Info
 Info::Info(const std::string &program) {
     name_ = program;
     i_main_ = false;
@@ -16,13 +17,13 @@ Info::Info(const std::string &program) {
     description_ = false;
 }
 
+// Funcion que utiliza expresiones regulares para buscar comentarios en el archivo
 void Info::search(const std::string &line) {
     std::regex multi_comment("\\/\\*+|\\*+\\/");
     std::regex single_comment("[^\\S]\\/\\/.*");
+    std::regex main("int main.*\\(.*\\).*");
     std::smatch c_matches;
     std::string empty = "";
-    
-   
     
     if(regex_search(line, c_matches, multi_comment)) {
         inside_ = !inside_;
@@ -35,10 +36,9 @@ void Info::search(const std::string &line) {
             type_.emplace_back(true);
         }
     } else if(inside_) {
-            comments_.emplace_back(line);
-        }
+        comments_.emplace_back(line);
+    }
 
-    
     if(regex_search(line, c_matches, single_comment)) {
         for(auto match2: c_matches) {
             comments_.emplace_back(match2);
@@ -47,14 +47,13 @@ void Info::search(const std::string &line) {
         }
     }
     
-    std::regex main("int main.*\\(.*\\).*");
     if(regex_match(line, main)){ 
         i_main_ = true;
     }
-    
     counterl_++;
 }
 
+// Funcion que escribe el nombre del programa y su descripcion si la tiene
 std::string Info::print_info() {
     std::string out;
     std::string program = "PROGRAM: ";
@@ -62,14 +61,14 @@ std::string Info::print_info() {
     std::string no_descript = "Program does not have a description";
     std::string end = "\n";
     int size = comments_.size();
-    int first = 0;
-    int second = 1;
+    int zero = 0;
+    int first = 1;
     out = program + name_ + end;
     out = out + description + end;
-    if(c_numl_[first] != second) {
+    if(c_numl_[zero] != first) {
         out = out + no_descript;
     } else {
-        for(int i = 0; i < size && i < c_numl_[second]; i++) {
+        for(int i = 0; i < size && i < c_numl_[first]; i++) {
             out = out + comments_[i] + end;
         }
         description_ = true;
@@ -78,6 +77,7 @@ std::string Info::print_info() {
     return out;
 }
 
+// Funcion que se encarga de escribir los comentarios existentes y su posicion correspondiente
 std::string Info::print_comments() {
     std::string out;
     std::string imain = "MAIN: ";

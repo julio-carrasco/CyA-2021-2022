@@ -2,6 +2,7 @@
 // 2º Ingenieria Informatica
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
+// alu0101110639@ull.edu.es
 
 #pragma once
 
@@ -9,6 +10,7 @@
 #include <vector>
 #include <regex>
 
+// Clase que almacena las declaraciones de bucles y el tipo de bucle
 class Loops {
     private:
     std::vector<int> l_numl_;

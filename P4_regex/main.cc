@@ -2,6 +2,7 @@
 // 2º Ingenieria Informatica
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
+// alu0101110639@ull.edu.es
 
 #include <iostream>
 #include <fstream>
@@ -53,17 +54,9 @@ void Help(int argc, char* argv[]) {
         cerr << "El programa escribira en el fichero de salida unas estadisticas obtenidas del fichero de codigo" << endl;
         exit(1);
     }
-
-
-
     if (argc != 3) {
         cerr << "Se debe introducir input.cc output.txt" << endl;
         cerr << "Escriba --help para mas informacion" << endl;
         exit(1);
     }
-
-
-    
-
-  
 }

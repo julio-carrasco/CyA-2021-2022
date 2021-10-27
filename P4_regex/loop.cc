@@ -2,9 +2,11 @@
 // 2º Ingenieria Informatica
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
+// alu0101110639@ull.edu.es
 
 #include "loop.h"
 
+// Constructor de clase Loop
 Loops::Loops() {
     l_numl_.reserve(1);
     l_type_.reserve(1);
@@ -14,6 +16,7 @@ Loops::Loops() {
     w_quantity_ = 0;
 }
 
+// Funcion que busca mediante exoresiones regulares las declaraciones de bucless
 void Loops::search(const std::string &line) {
     int first = 1;
     int second = 2;
@@ -54,6 +57,7 @@ void Loops::search(const std::string &line) {
     l_counterl_++;
 }
 
+// Funcion que escribe el tipo de bucle y en que linea se declara
 std::string Loops::print_loop() {
     std::string out;
     std::string title = "STATEMENTS: ";

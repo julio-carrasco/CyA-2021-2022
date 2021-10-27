@@ -2,6 +2,7 @@
 // 2º Ingenieria Informatica
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
+// alu0101110639@ull.edu.es
 
 #pragma once
 
@@ -9,6 +10,7 @@
 #include <vector>
 #include <regex>
 
+// Clase que almacena las declaraciones de variables del archivo y su valor en caso de estar inicializadas
 class Variable {
     private:
     std::vector<int> v_numl_;

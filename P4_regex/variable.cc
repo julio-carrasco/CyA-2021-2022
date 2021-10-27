@@ -2,10 +2,11 @@
 // 2º Ingenieria Informatica
 // Universidad de La Laguna
 // Computabilidad y Algoritmia
+// alu0101110639@ull.edu.es
 
 #include "variable.h"
 
-
+// Constructor de clase Variable
 Variable::Variable() {
     v_numl_.reserve(1);
     v_type_.reserve(1);
@@ -16,8 +17,7 @@ Variable::Variable() {
     d_quantity_ = 0;
 }
 
-// Funcion recibe linea desde el archivo introducido por linea
-// y basandose en unas expresiones regulares busca las variables int y double fuera de bloques
+// Funcion que se encarga de buscar mediante expresiones regulares las declaraciones de variables
 void Variable::search(const std::string &line) {
     int first = 1;
     int second = 2;
@@ -29,7 +29,7 @@ void Variable::search(const std::string &line) {
     int counter = 1;
     std::regex exp0("[^\\S](int) ([a-z]+).*\\D([0-9]+)");
     std::regex exp1("[^\\S](int) ([a-z]+);");
-    std::regex exp2("[^\\S](double) ([a-z]+).*\\D([0-9]+\\.[0-9]+)");
+    std::regex exp2("[^\\S](double) ([a-z]+)\\D*([0-9]+\\.?[0-9]*)");
     std::regex exp3("[^\\S](double) ([a-z]+);");
     if(regex_search(line, i_matches, exp0)) {
         counter = 1;
@@ -114,6 +114,8 @@ void Variable::search(const std::string &line) {
     v_counterl_++;
 }
 
+
+// Funcion que se encarga de escribir los nombres y tipos de las variables ademas de sus valores si lo tienen
 std::string Variable::print_var() {
     std::string out;
     std::string title = "VARIABLES: ";

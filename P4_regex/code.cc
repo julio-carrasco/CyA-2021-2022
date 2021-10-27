@@ -34,7 +34,7 @@ int Factorial(int number) {
       int factorial{1};
       for (int i = 1; i <= number; ++i) {
         factorial *= i;
-        double xpotato;
+        double xpotato = 2;
         double korone{0.5};
       }
       return factorial;
