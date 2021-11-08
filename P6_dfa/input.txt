@@ -1,0 +1,8 @@
+&
+a
+b
+aaaa
+abab
+bababa
+b&
+&a
